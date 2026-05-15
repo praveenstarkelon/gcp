@@ -1,0 +1,35 @@
+Method — Official Installer Script
+bashcurl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-linux-x86_64.tar.gz
+Phir extract karo:
+bashtar -xf google-cloud-cli-linux-x86_64.tar.gz
+Phir install karo:
+bash./google-cloud-sdk/install.sh
+Phir PATH mein add karo:
+bashsource ~/.bashrc
+Verify karo:
+bash
+gcloud version
+
+export PATH="$HOME/google-cloud-sdk/bin:$PATH"
+
+Step 1 — kubectl aur GKE auth plugin install karo
+bashgcloud components install kubectl gke-gcloud-auth-plugin
+
+Step 2 — Verify karo
+bashgcloud version
+
+Step 3 — Google account se login karo
+bashgcloud auth login
+Browser khulega Sir — apna Google account select kar lijiye jo dekoder-uat project se linked hai.
+
+Step 4 — Project set karo
+bashgcloud config set project dekoder-uat
+
+Step 5 — Cluster credentials fetch karo
+bashgcloud container clusters get-credentials dekoder-uat \
+  --region asia-south1 \
+  --project dekoder-uat
+
+Step 6 — Final verify
+bashkubectl get nodes
+
